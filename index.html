@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bautagebuch - Digitale Baustellendokumentation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-hard-hat"></i> Bautagebuch</h1>
+                <p>Digitale Baustellendokumentation</p>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <ul class="nav-tabs">
+                <li><a href="#pre-construction" class="nav-tab active" data-tab="pre-construction">
+                    <i class="fas fa-clipboard-list"></i> Vor Baubeginn
+                </a></li>
+                <li><a href="#daily-log" class="nav-tab" data-tab="daily-log">
+                    <i class="fas fa-calendar-day"></i> Tägliche Einträge
+                </a></li>
+                <li><a href="#construction-schedule" class="nav-tab" data-tab="construction-schedule">
+                    <i class="fas fa-calendar-alt"></i> Bauzeitenplan
+                </a></li>
+                <li><a href="#post-construction" class="nav-tab" data-tab="post-construction">
+                    <i class="fas fa-check-circle"></i> Nach Abschluss
+                </a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Vor Baubeginn -->
+            <section id="pre-construction" class="content-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-clipboard-list"></i> Vor Beginn der Baumaßnahmen</h2>
+                </div>
+
+                <!-- Allgemeine Projektdaten -->
+                <div class="card">
+                    <h3><i class="fas fa-info-circle"></i> Allgemeine Projektdaten</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="bauherr">Bauherr</label>
+                            <input type="text" id="bauherr" placeholder="Name des Bauherrn">
+                        </div>
+                        <div class="form-group">
+                            <label for="bauherr-adresse">Adresse Bauherr</label>
+                            <textarea id="bauherr-adresse" placeholder="Vollständige Adresse"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="auftraggeber">Auftraggeber</label>
+                            <input type="text" id="auftraggeber" placeholder="Name des Auftraggebers">
+                        </div>
+                        <div class="form-group">
+                            <label for="auftraggeber-adresse">Adresse Auftraggeber</label>
+                            <textarea id="auftraggeber-adresse" placeholder="Vollständige Adresse"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="auftragnehmer">Auftragnehmer</label>
+                            <input type="text" id="auftragnehmer" placeholder="Name des Auftragnehmers">
+                        </div>
+                        <div class="form-group">
+                            <label for="auftragnehmer-adresse">Adresse Auftragnehmer</label>
+                            <textarea id="auftragnehmer-adresse" placeholder="Vollständige Adresse"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="projektnummer">Projektnummer / Bauaktenzeichen</label>
+                            <input type="text" id="projektnummer" placeholder="z.B. BA-2024-001">
+                        </div>
+                        <div class="form-group">
+                            <label for="grundstueck">Grundstücksdaten</label>
+                            <input type="text" id="grundstueck" placeholder="Adresse des Grundstücks">
+                        </div>
+                        <div class="form-group">
+                            <label for="flurstueck">Flurstücknummer</label>
+                            <input type="text" id="flurstueck" placeholder="z.B. 123/45">
+                        </div>
+                        <div class="form-group">
+                            <label for="baugenehmigung">Baugenehmigung</label>
+                            <input type="text" id="baugenehmigung" placeholder="Genehmigungsnummer">
+                        </div>
+                        <div class="form-group">
+                            <label for="sondergenehmigungen">Sondergenehmigungen</label>
+                            <textarea id="sondergenehmigungen" placeholder="Weitere Genehmigungen und Auflagen"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beteiligte Personen -->
+                <div class="card">
+                    <h3><i class="fas fa-users"></i> Beteiligte Personen</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="architekt">Architekt</label>
+                            <input type="text" id="architekt" placeholder="Name und Kontaktdaten">
+                        </div>
+                        <div class="form-group">
+                            <label for="bauleiter">Bauleiter</label>
+                            <input type="text" id="bauleiter" placeholder="Name und Kontaktdaten">
+                        </div>
+                        <div class="form-group">
+                            <label for="fachplaner">Fachplaner</label>
+                            <textarea id="fachplaner" placeholder="Statik, TGA, etc."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="gutachter">Gutachter</label>
+                            <textarea id="gutachter" placeholder="Baugrund, Brandschutz, etc."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Organisatorisches -->
+                <div class="card">
+                    <h3><i class="fas fa-tasks"></i> Organisatorisches</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="sige-plan">Sicherheits- und Gesundheitsschutzplan (SiGe-Plan)</label>
+                            <input type="file" id="sige-plan" accept=".pdf,.doc,.docx">
+                        </div>
+                        <div class="form-group">
+                            <label for="bauzeitenplan">Bauzeitenplan / Meilensteine</label>
+                            <input type="file" id="bauzeitenplan" accept=".pdf,.doc,.docx,.xls,.xlsx">
+                        </div>
+                        <div class="form-group">
+                            <label for="versicherungen">Versicherungen</label>
+                            <textarea id="versicherungen" placeholder="Bauleistungsversicherung, Haftpflicht, etc."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="kommunikation">Kommunikationsstruktur</label>
+                            <textarea id="kommunikation" placeholder="Zuständigkeiten, Ansprechpartner"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vorbereitende Maßnahmen -->
+                <div class="card">
+                    <h3><i class="fas fa-search"></i> Vorbereitende Maßnahmen</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="baugrundgutachten">Boden- & Baugrundgutachten</label>
+                            <input type="file" id="baugrundgutachten" accept=".pdf,.doc,.docx">
+                        </div>
+                        <div class="form-group">
+                            <label for="vermessungen">Vermessungen</label>
+                            <input type="file" id="vermessungen" accept=".pdf,.dwg,.dxf">
+                        </div>
+                        <div class="form-group">
+                            <label for="leitungsplaene">Leitungspläne</label>
+                            <input type="file" id="leitungsplaene" accept=".pdf,.dwg,.dxf" multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="kampfmittelsondierung">Kampfmittelsondierung</label>
+                            <input type="file" id="kampfmittelsondierung" accept=".pdf,.doc,.docx">
+                        </div>
+                        <div class="form-group">
+                            <label for="altlasten">Altlastenprüfung</label>
+                            <input type="file" id="altlasten" accept=".pdf,.doc,.docx">
+                        </div>
+                        <div class="form-group">
+                            <label for="umweltauflagen">Nachbarschafts- und Umweltauflagen</label>
+                            <textarea id="umweltauflagen" placeholder="Immissionsschutz, etc."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ausschreibung -->
+                <div class="card">
+                    <h3><i class="fas fa-gavel"></i> Ausschreibung</h3>
+                    
+                    <!-- Bedarfs- und Projektdefinition -->
+                    <div class="subsection">
+                        <h4><i class="fas fa-lightbulb"></i> 1. Bedarfs- und Projektdefinition</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="projektdefinition">Projektdefinition</label>
+                                <textarea id="projektdefinition" placeholder="Was soll gebaut werden? (Art, Umfang, Qualitäten, Zeitrahmen, Budget)"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="vergabeverfahren">Vergabeverfahren</label>
+                                <select id="vergabeverfahren">
+                                    <option value="">Bitte auswählen</option>
+                                    <option value="oeffentlich">Öffentliche Ausschreibung</option>
+                                    <option value="beschraenkt">Beschränkte Ausschreibung</option>
+                                    <option value="freihaendig">Freihändige Vergabe</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="finanzierung">Finanzierung / Freigabe</label>
+                                <textarea id="finanzierung" placeholder="Prüfung der Finanzierung, Freigabe durch Bauherrn"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="budget">Budget</label>
+                                <input type="text" id="budget" placeholder="z.B. 500.000 €">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Erstellung der Ausschreibungsunterlagen -->
+                    <div class="subsection">
+                        <h4><i class="fas fa-file-alt"></i> 2. Erstellung der Ausschreibungsunterlagen</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="leistungsverzeichnis">Leistungsverzeichnis (LV)</label>
+                                <input type="file" id="leistungsverzeichnis" accept=".pdf,.doc,.docx,.xls,.xlsx" multiple>
+                            </div>
+                            <div class="form-group">
+                                <label for="bauleistungsbeschreibung">Bau- und Leistungsbeschreibung</label>
+                                <input type="file" id="bauleistungsbeschreibung" accept=".pdf,.doc,.docx" multiple>
+                            </div>
+                            <div class="form-group">
+                                <label for="ausschreibungsplaene">Pläne und Zeichnungen</label>
+                                <input type="file" id="ausschreibungsplaene" accept=".pdf,.dwg,.dxf" multiple>
+                            </div>
+                            <div class="form-group">
+                                <label for="vertragsbedingungen">Vertragsbedingungen</label>
+                                <input type="file" id="vertragsbedingungen" accept=".pdf,.doc,.docx" multiple>
+                            </div>
+                            <div class="form-group">
+                                <label for="angebotsfrist">Angebotsfrist</label>
+                                <input type="datetime-local" id="angebotsfrist">
+                            </div>
+                            <div class="form-group">
+                                <label for="ausfuehrungsfrist">Ausführungsfrist</label>
+                                <input type="text" id="ausfuehrungsfrist" placeholder="z.B. 12 Monate">
+                            </div>
+                            <div class="form-group">
+                                <label for="bindefrist">Bindefrist</label>
+                                <input type="text" id="bindefrist" placeholder="z.B. 30 Tage">
+                            </div>
+                            <div class="form-group">
+                                <label for="eignungskriterien">Eignungskriterien</label>
+                                <textarea id="eignungskriterien" placeholder="Referenzen, Nachweise, Qualifikationen"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Veröffentlichung der Ausschreibung -->
+                    <div class="subsection">
+                        <h4><i class="fas fa-bullhorn"></i> 3. Veröffentlichung der Ausschreibung</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="veroeffentlichungsdatum">Veröffentlichungsdatum</label>
+                                <input type="date" id="veroeffentlichungsdatum">
+                            </div>
+                            <div class="form-group">
+                                <label for="vergabeportale">Vergabeportale</label>
+                                <textarea id="vergabeportale" placeholder="eVergabe, TED, regionale Portale"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="eingeladene-firmen">Eingeladene Firmen</label>
+                                <textarea id="eingeladene-firmen" placeholder="Liste der eingeladenen Unternehmen"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="bekanntmachung">Bekanntmachung</label>
+                                <input type="file" id="bekanntmachung" accept=".pdf,.doc,.docx" multiple>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Angebotsphase -->
+                    <div class="subsection">
+                        <h4><i class="fas fa-question-circle"></i> 4. Angebotsphase (Bieterphase)</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="bieterfragen">Bieterfragen</label>
+                                <textarea id="bieterfragen" placeholder="Gestellte Fragen und Antworten"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="bieterkonferenz">Bieterkonferenz / Ortsbesichtigung</label>
+                                <input type="datetime-local" id="bieterkonferenz">
+                            </div>
+                            <div class="form-group">
+                                <label for="konferenz-protokoll">Protokoll Bieterkonferenz</label>
+                                <input type="file" id="konferenz-protokoll" accept=".pdf,.doc,.docx">
+                            </div>
+                            <div class="form-group">
+                                <label for="angebotsabgabe">Angebotsabgabe</label>
+                                <textarea id="angebotsabgabe" placeholder="Verfahren, Plattformen, Anzahl eingegangener Angebote"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Angebotsöffnung -->
+                    <div class="subsection">
+                        <h4><i class="fas fa-unlock"></i> 5. Angebotsöffnung (Submission)</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="submission-datum">Datum der Angebotsöffnung</label>
+                                <input type="datetime-local" id="submission-datum">
+                            </div>
+                            <div class="form-group">
+                                <label for="submission-protokoll">Protokoll der Angebotsöffnung</label>
+                                <input type="file" id="submission-protokoll" accept=".pdf,.doc,.docx">
+                            </div>
+                            <div class="form-group">
+                                <label for="eingegangene-angebote">Eingegangene Angebote</label>
+                                <textarea id="eingegangene-angebote" placeholder="Anzahl, Bieter, erste Preisübersicht"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Angebotsprüfung und Wertung -->
+                    <div class="subsection">
+                        <h4><i class="fas fa-search"></i> 6. Angebotsprüfung und Wertung</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="formelle-pruefung">Formelle Prüfung</label>
+                                <textarea id="formelle-pruefung" placeholder="Vollständigkeit, Fristen, Unterschriften"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="eignungspruefung">Eignungsprüfung</label>
+                                <textarea id="eignungspruefung" placeholder="Wirtschaftliche, fachliche, rechtliche Leistungsfähigkeit"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="preisvergleich">Preisvergleich</label>
+                                <textarea id="preisvergleich" placeholder="Angebotspreise, Nebenangebote, Qualitätsbewertung"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="wertungskriterien">Wertungskriterien</label>
+                                <textarea id="wertungskriterien" placeholder="Preis, Qualität, Nachhaltigkeit, Termintreue, Referenzen"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vergabeentscheidung -->
+                    <div class="subsection">
+                        <h4><i class="fas fa-trophy"></i> 7. Vergabeentscheidung</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="vergabeentscheidung-datum">Datum der Vergabeentscheidung</label>
+                                <input type="date" id="vergabeentscheidung-datum">
+                            </div>
+                            <div class="form-group">
+                                <label for="zuschlagsempfaenger">Zuschlagsempfänger</label>
+                                <input type="text" id="zuschlagsempfaenger" placeholder="Name des erfolgreichen Bieters">
+                            </div>
+                            <div class="form-group">
+                                <label for="vergabe-vermerk">Vergabevermerk</label>
+                                <input type="file" id="vergabe-vermerk" accept=".pdf,.doc,.docx">
+                            </div>
+                            <div class="form-group">
+                                <label for="begruendung">Begründung der Entscheidung</label>
+                                <textarea id="begruendung" placeholder="Warum wurde dieser Bieter ausgewählt?"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zuschlag und Vertragsabschluss -->
+                    <div class="subsection">
+                        <h4><i class="fas fa-handshake"></i> 8. Zuschlag und Vertragsabschluss</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="zuschlag-datum">Zuschlag erteilt am</label>
+                                <input type="date" id="zuschlag-datum">
+                            </div>
+                            <div class="form-group">
+                                <label for="vertragsabschluss-datum">Vertragsabschluss am</label>
+                                <input type="date" id="vertragsabschluss-datum">
+                            </div>
+                            <div class="form-group">
+                                <label for="bauvertrag">Bauvertrag</label>
+                                <input type="file" id="bauvertrag" accept=".pdf,.doc,.docx">
+                            </div>
+                            <div class="form-group">
+                                <label for="vertragsbestandteile">Vertragsbestandteile</label>
+                                <textarea id="vertragsbestandteile" placeholder="LV, Pläne, Bedingungen, Anlagen"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="abgesagte-bieter">Abgesagte Bieter</label>
+                                <textarea id="abgesagte-bieter" placeholder="Liste der nicht berücksichtigten Bieter"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nachbereitung -->
+                    <div class="subsection">
+                        <h4><i class="fas fa-archive"></i> 9. Nachbereitung</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="archivierung">Archivierung der Unterlagen</label>
+                                <textarea id="archivierung" placeholder="Aufbewahrungsfristen, Nachweispflicht"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="uebergabe-bauleitung">Übergabe an Bauleitung</label>
+                                <input type="date" id="uebergabe-bauleitung">
+                            </div>
+                            <div class="form-group">
+                                <label for="projektsteuerung">Projektsteuerung</label>
+                                <textarea id="projektsteuerung" placeholder="Übergabe an Projektsteuerung, nächste Schritte"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="ausschreibung-abschluss">Abschlussbericht Ausschreibung</label>
+                                <input type="file" id="ausschreibung-abschluss" accept=".pdf,.doc,.docx">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tägliche Einträge -->
+            <section id="daily-log" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-calendar-day"></i> Tägliche Bautagebuch-Einträge</h2>
+                    <button class="btn btn-primary" id="add-daily-entry">
+                        <i class="fas fa-plus"></i> Neuer Eintrag
+                    </button>
+                </div>
+
+                <div class="daily-entries-container" id="daily-entries">
+                    <!-- Einträge werden hier dynamisch eingefügt -->
+                </div>
+
+                <!-- Template für neuen Eintrag -->
+                <template id="daily-entry-template">
+                    <div class="daily-entry card">
+                        <div class="entry-header">
+                            <div class="entry-date">
+                                <input type="date" class="date-input">
+                                <select class="weather-select">
+                                    <option value="">Wetter auswählen</option>
+                                    <option value="sonnig">☀️ Sonnig</option>
+                                    <option value="bewölkt">☁️ Bewölkt</option>
+                                    <option value="regnerisch">🌧️ Regnerisch</option>
+                                    <option value="schnee">❄️ Schnee</option>
+                                    <option value="windig">💨 Windig</option>
+                                    <option value="frost">🧊 Frost</option>
+                                </select>
+                                <input type="text" class="temperature-input" placeholder="Temperatur (°C)">
+                            </div>
+                            <button class="btn btn-danger btn-sm delete-entry">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+
+                        <div class="entry-content">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Personal vor Ort</label>
+                                    <textarea class="personal-input" placeholder="Firmen, Anzahl Arbeiter, Verantwortliche"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Geräte und Maschinen</label>
+                                    <textarea class="equipment-input" placeholder="Eingesetzte Maschinen, Betriebszeiten, Besonderheiten"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Lieferungen und Materialien</label>
+                                    <textarea class="materials-input" placeholder="Angelieferte Materialien, Lieferanten, Chargennummern"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Baufortschritt</label>
+                                    <textarea class="progress-input" placeholder="Ausgeführte Arbeiten, Verweise auf Pläne, Besonderheiten"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Mängel und Störungen</label>
+                                    <textarea class="issues-input" placeholder="Bauablaufstörungen, dokumentierte Mängel, Anweisungen"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Abnahmen und Prüfungen</label>
+                                    <textarea class="inspections-input" placeholder="Teilabnahmen, Prüfprotokolle, Besprechungen"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Sicherheit und Umweltschutz</label>
+                                    <textarea class="safety-input" placeholder="Unfälle, Sicherheitskontrollen, Schutzmaßnahmen"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Fotodokumentation</label>
+                                    <input type="file" class="photos-input" accept="image/*" multiple>
+                                    <textarea class="photo-description" placeholder="Beschreibung der Fotos"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </section>
+
+            <!-- Bauzeitenplan -->
+            <section id="construction-schedule" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-calendar-alt"></i> Bauzeitenplan</h2>
+                    <div class="schedule-controls">
+                        <button class="btn btn-secondary" id="prev-month">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span id="current-month-year">Januar 2024</span>
+                        <button class="btn btn-secondary" id="next-month">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button class="btn btn-primary" id="add-milestone">
+                            <i class="fas fa-plus"></i> Meilenstein hinzufügen
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kalender -->
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <div class="calendar-weekdays">
+                            <div class="weekday">Mo</div>
+                            <div class="weekday">Di</div>
+                            <div class="weekday">Mi</div>
+                            <div class="weekday">Do</div>
+                            <div class="weekday">Fr</div>
+                            <div class="weekday">Sa</div>
+                            <div class="weekday">So</div>
+                        </div>
+                    </div>
+                    <div class="calendar-grid" id="calendar-grid">
+                        <!-- Kalendertage werden hier dynamisch eingefügt -->
+                    </div>
+                </div>
+
+                <!-- Meilensteine und Aufgaben -->
+                <div class="milestones-section">
+                    <h3><i class="fas fa-flag-checkered"></i> Meilensteine und Aufgaben</h3>
+                    <div class="milestones-container" id="milestones-container">
+                        <!-- Meilensteine werden hier angezeigt -->
+                    </div>
+                </div>
+
+                <!-- Template für Meilenstein -->
+                <template id="milestone-template">
+                    <div class="milestone-item card">
+                        <div class="milestone-header">
+                            <div class="milestone-info">
+                                <h4 class="milestone-title">Neuer Meilenstein</h4>
+                                <span class="milestone-date">01.01.2024</span>
+                            </div>
+                            <div class="milestone-actions">
+                                <button class="btn btn-sm btn-secondary edit-milestone">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger delete-milestone">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="milestone-content">
+                            <p class="milestone-description">Beschreibung des Meilensteins</p>
+                            <div class="milestone-progress">
+                                <label>Fortschritt:</label>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-text">0%</span>
+                            </div>
+                            <div class="milestone-status">
+                                <select class="status-select">
+                                    <option value="planned">Geplant</option>
+                                    <option value="in-progress">In Bearbeitung</option>
+                                    <option value="completed">Abgeschlossen</option>
+                                    <option value="delayed">Verzögert</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Modal für Meilenstein-Bearbeitung -->
+                <div id="milestone-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="modal-title">Meilenstein bearbeiten</h3>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="milestone-form">
+                                <div class="form-group">
+                                    <label for="milestone-name">Titel</label>
+                                    <input type="text" id="milestone-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="milestone-date">Datum</label>
+                                    <input type="date" id="milestone-date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="milestone-description">Beschreibung</label>
+                                    <textarea id="milestone-description" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="milestone-category">Kategorie</label>
+                                    <select id="milestone-category">
+                                        <option value="foundation">Fundament</option>
+                                        <option value="structure">Rohbau</option>
+                                        <option value="roofing">Dach</option>
+                                        <option value="electrical">Elektro</option>
+                                        <option value="plumbing">Sanitär</option>
+                                        <option value="heating">Heizung</option>
+                                        <option value="finishing">Ausbau</option>
+                                        <option value="inspection">Abnahme</option>
+                                        <option value="other">Sonstiges</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="milestone-priority">Priorität</label>
+                                    <select id="milestone-priority">
+                                        <option value="low">Niedrig</option>
+                                        <option value="medium">Mittel</option>
+                                        <option value="high">Hoch</option>
+                                        <option value="critical">Kritisch</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="milestone-duration">Dauer (Tage)</label>
+                                    <input type="number" id="milestone-duration" min="1" value="1">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="cancel-milestone">Abbrechen</button>
+                            <button type="button" class="btn btn-primary" id="save-milestone">Speichern</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Nach Abschluss -->
+            <section id="post-construction" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-check-circle"></i> Nach Abschluss der Baumaßnahmen</h2>
+                </div>
+
+                <!-- Abnahmen -->
+                <div class="card">
+                    <h3><i class="fas fa-clipboard-check"></i> Abnahmen</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="teilabnahmen">Teilabnahmen</label>
+                            <input type="file" id="teilabnahmen" accept=".pdf,.doc,.docx" multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="endabnahme">Endabnahme</label>
+                            <input type="file" id="endabnahme" accept=".pdf,.doc,.docx">
+                        </div>
+                        <div class="form-group">
+                            <label for="maengelprotokoll">Mängelprotokoll</label>
+                            <input type="file" id="maengelprotokoll" accept=".pdf,.doc,.docx">
+                        </div>
+                        <div class="form-group">
+                            <label for="nacharbeiten">Nacharbeiten</label>
+                            <textarea id="nacharbeiten" placeholder="Beschreibung der Nacharbeiten und Fristen"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bestandsunterlagen -->
+                <div class="card">
+                    <h3><i class="fas fa-folder-open"></i> Bestandsunterlagen</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="bauplaene">Baupläne</label>
+                            <input type="file" id="bauplaene" accept=".pdf,.dwg,.dxf" multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="revisionszeichnungen">Revisionszeichnungen</label>
+                            <input type="file" id="revisionszeichnungen" accept=".pdf,.dwg,.dxf" multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="pruefzeugnisse">Prüfzeugnisse</label>
+                            <input type="file" id="pruefzeugnisse" accept=".pdf,.doc,.docx" multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="zertifikate">Zertifikate</label>
+                            <input type="file" id="zertifikate" accept=".pdf,.doc,.docx" multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="wartungsanleitungen">Wartungsanleitungen</label>
+                            <input type="file" id="wartungsanleitungen" accept=".pdf,.doc,.docx" multiple>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nachweise und Dokumentation -->
+                <div class="card">
+                    <h3><i class="fas fa-certificate"></i> Nachweise und Dokumentation</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="entsorgungsnachweise">Entsorgungsnachweise</label>
+                            <input type="file" id="entsorgungsnachweise" accept=".pdf,.doc,.docx" multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="materialherkunft">Materialherkunft</label>
+                            <textarea id="materialherkunft" placeholder="FSC-Zertifikate, etc."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="sicherheitsplaene">Sicherheitspläne</label>
+                            <input type="file" id="sicherheitsplaene" accept=".pdf,.doc,.docx" multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="wartungsplaene">Wartungspläne</label>
+                            <input type="file" id="wartungsplaene" accept=".pdf,.doc,.docx" multiple>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schlussdokumentation -->
+                <div class="card">
+                    <h3><i class="fas fa-file-alt"></i> Schlussdokumentation</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="bauablauf">Gesamtdarstellung des Bauablaufs</label>
+                            <textarea id="bauablauf" placeholder="Zusammenfassung des gesamten Bauablaufs"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="fertigfotos">Fotos der fertigen Bauleistung</label>
+                            <input type="file" id="fertigfotos" accept="image/*" multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="unterschriften">Unterschriften</label>
+                            <div class="signature-section">
+                                <div class="signature-item">
+                                    <label>Bauherr</label>
+                                    <input type="text" placeholder="Name, Datum, Unterschrift">
+                                </div>
+                                <div class="signature-item">
+                                    <label>Bauleiter</label>
+                                    <input type="text" placeholder="Name, Datum, Unterschrift">
+                                </div>
+                                <div class="signature-item">
+                                    <label>Unternehmer</label>
+                                    <input type="text" placeholder="Name, Datum, Unterschrift">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Bautagebuch - Digitale Baustellendokumentation</p>
+                <div class="footer-actions">
+                    <button class="btn btn-secondary" id="export-data">
+                        <i class="fas fa-download"></i> Daten exportieren
+                    </button>
+                    <button class="btn btn-secondary" id="import-data">
+                        <i class="fas fa-upload"></i> Daten importieren
+                    </button>
+                    <button class="btn btn-primary" id="save-data">
+                        <i class="fas fa-save"></i> Speichern
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
