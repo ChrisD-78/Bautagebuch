@@ -260,13 +260,14 @@ body {
 }
 
 .btn-info {
-    background: #17a2b8;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
 }
 
 .btn-info:hover {
-    background: #138496;
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .btn-sm {
