@@ -90,6 +90,14 @@ class BautagebuchApp {
                 this.autoSave();
             }
         });
+
+        // Info button for Bauherr/Auftraggeber
+        const infoButton = document.getElementById('info-button');
+        if (infoButton) {
+            infoButton.addEventListener('click', () => {
+                this.openBauherrAuftraggeberInfo();
+            });
+        }
     }
 
     // Navigation
@@ -401,6 +409,99 @@ class BautagebuchApp {
 
     generateId() {
         return Date.now() + Math.random().toString(36).substr(2, 9);
+    }
+
+    // Open info about Bauherr and Auftraggeber
+    openBauherrAuftraggeberInfo() {
+        const infoContent = `Die Begriffe Bauherr und Auftraggeber werden im Alltag oft synonym verwendet, juristisch und organisatorisch gibt es aber deutliche Unterschiede.
+
+Hier ist eine klare und übersichtliche Erklärung 👇
+
+🏗️ Bauherr
+Definition:
+Der Bauherr ist die rechtlich und wirtschaftlich verantwortliche Person (natürliche oder juristische), die ein Bauvorhaben initiiert, finanziert und durchführt.
+Er ist also derjenige, in dessen Namen gebaut wird und der am Ende Eigentümer des Bauwerks wird.
+
+Typische Aufgaben und Pflichten des Bauherrn:
+• Entscheidung über Art und Umfang des Bauprojekts
+• Finanzierung sicherstellen
+• Genehmigungen beantragen (Bauantrag, etc.)
+• Beauftragung von Planern, Architekten und Bauunternehmen
+• Übernahme der Gesamtverantwortung (Haftung, Termine, Kosten, Qualität)
+• Einhaltung der gesetzlichen Pflichten (z. B. Arbeitsschutz, Verkehrssicherung)
+
+Beispiel:
+Ein privater Hausbesitzer, der ein Einfamilienhaus baut, ist der Bauherr.
+
+🤝 Auftraggeber
+Definition:
+Der Auftraggeber ist derjenige, der einen Auftrag vergibt – also einen Vertrag abschließt mit einem Auftragnehmer (z. B. Architekt, Bauunternehmer, Ingenieurbüro).
+Das kann der Bauherr selbst sein, muss es aber nicht.
+
+Beispielhafte Fälle:
+• Der Bauherr (z. B. eine Stadt oder ein Investor) beauftragt ein Projektsteuerungsunternehmen → Auftraggeber ist der Bauherr.
+• Dieses Projektsteuerungsunternehmen vergibt wiederum Aufträge an Planer oder Baufirmen → Dann ist das Unternehmen Auftraggeber, nicht mehr der Bauherr direkt.`;
+
+        // Create a modal to display the information
+        this.showInfoModal('Bauherr vs. Auftraggeber', infoContent);
+    }
+
+    // Show info modal
+    showInfoModal(title, content) {
+        // Remove existing modal if present
+        const existingModal = document.getElementById('info-modal');
+        if (existingModal) {
+            existingModal.remove();
+        }
+
+        // Create modal
+        const modal = document.createElement('div');
+        modal.id = 'info-modal';
+        modal.className = 'modal show';
+        modal.innerHTML = `
+            <div class="modal-content" style="max-width: 600px;">
+                <div class="modal-header">
+                    <h3>${title}</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body" style="white-space: pre-line; line-height: 1.6;">
+                    ${content}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="close-info-modal">Schließen</button>
+                </div>
+            </div>
+        `;
+
+        // Add to document
+        document.body.appendChild(modal);
+
+        // Event listeners
+        const closeBtn = modal.querySelector('.modal-close');
+        const footerCloseBtn = modal.querySelector('#close-info-modal');
+        
+        const closeModal = () => {
+            modal.remove();
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        footerCloseBtn.addEventListener('click', closeModal);
+
+        // Close when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close with Escape key
+        const escapeHandler = (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                document.removeEventListener('keydown', escapeHandler);
+            }
+        };
+        document.addEventListener('keydown', escapeHandler);
     }
 
     // Calendar Functions
